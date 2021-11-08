@@ -1,0 +1,16 @@
+name: DuelPlugin
+author: ScAxeliss
+version: 1.0
+main: fr.scaxeliss.duelplugin.Main
+commands:
+  start:
+    description: "Start the game after a 10s countdown"
+  gstop:
+    description: "Stop the game instantly"
+  fs:
+    description: "Start the game"
+  statut:
+  kit:
+    description: "Open the Inventory Kit GUI"
+  kitlist:
+  kl:
