@@ -10,6 +10,10 @@ public class Main extends JavaPlugin {
 
     private static Main instance;
 
+    @Override
+    public void onLoad(){
+        saveDefaultConfig();
+    }
 
     @Override
     public void onEnable() {
@@ -21,15 +25,6 @@ public class Main extends JavaPlugin {
             Kits.kit.put(onlinePlayers, "Aucun");
         }
 
-    }
-
-    @Override
-    public void onDisable() {
-
-    }
-
-    public void onLoad(){
-        saveDefaultConfig();
     }
 
     public static Main getInstance(){
