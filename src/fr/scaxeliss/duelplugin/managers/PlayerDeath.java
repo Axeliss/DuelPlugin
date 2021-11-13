@@ -39,9 +39,6 @@ public class PlayerDeath implements Listener {
                 case 3:
                     e.setDeathMessage("§7" + player.getName() + " §es'est fait humilier par §7" + player.getKiller().getName());
                     break;
-                case 4:
-                    e.setDeathMessage("§7" + player.getName() + " §en'a pas tellement apprécié combattre §7" + player.getKiller().getName());
-                    break;
                 case 5:
                     e.setDeathMessage("§7" + player.getName() + " §ea dû se soumettre face à §7" + player.getKiller().getName());
                     break;
