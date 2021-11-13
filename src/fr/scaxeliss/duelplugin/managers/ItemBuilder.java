@@ -17,30 +17,21 @@ public class ItemBuilder {
         it.setItemMeta(itM);
         return it;
     }
-    public static ItemStack ItemWithByte(Material material, String name, Byte byyte){
-        ItemStack it = new ItemStack(material, 1, byyte);
-        ItemMeta itM = it.getItemMeta();
-        itM.setDisplayName(name);
-        it.setItemMeta(itM);
-        return it;
-    }
 
     public static ItemStack itemWithLore(Material material, String name, String lore, String lore2){
-        ItemStack it = new ItemStack(material, 1);
-        ItemMeta itM = it.getItemMeta();
-        itM.setDisplayName(name);
-        itM.setLore(Arrays.asList(lore, lore2));
-        it.setItemMeta(itM);
+        ItemStack it = classicItem(material, name);
+        ItemMeta itm = it.getItemMeta();
+        itm.setLore(Arrays.asList(lore, lore2));
+        it.setItemMeta(itm);
         return it;
     }
 
-    public static ItemStack itemWithEnchant(Material material, String name, Enchantment enchant){
-        ItemStack it = new ItemStack(material, 1);
-        ItemMeta itM = it.getItemMeta();
-        itM.setDisplayName(name);
-        itM.addEnchant(enchant, 1, false);
-        itM.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-        it.setItemMeta(itM);
+    public static ItemStack itemWithEnchant(Material material, String name, Enchantment enchant, int niveau){
+        ItemStack it = classicItem(material, name);
+        ItemMeta itm = it.getItemMeta();
+        itm.addEnchant(enchant, niveau, true);
+        itm.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+        it.setItemMeta(itm);
         return it;
     }
 
