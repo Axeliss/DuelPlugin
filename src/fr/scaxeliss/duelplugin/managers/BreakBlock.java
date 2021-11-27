@@ -16,8 +16,8 @@ public class BreakBlock implements Listener {
 
         if (!player.getGameMode().equals(GameMode.CREATIVE)) {
             if (bloc.getType() != Material.WOOD) {
-                e.setCancelled(true);
                 player.sendMessage("§cErreur : vous ne pouvez pas casser que des blocs posés par des joueurs.");
+                e.setCancelled(true);
             }
         }
     }
