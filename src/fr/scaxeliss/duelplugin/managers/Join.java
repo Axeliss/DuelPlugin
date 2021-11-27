@@ -9,6 +9,8 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
 
 public class Join implements Listener {
@@ -19,9 +21,17 @@ public class Join implements Listener {
         player.getInventory().clear();
         ClearArmor.clearArmor(player);
 
+
         int x = (int) Main.getInstance().getConfig().get("spawnpoint.x");
         int y = (int) Main.getInstance().getConfig().get("spawnpoint.y");
         int z = (int) Main.getInstance().getConfig().get("spawnpoint.z");
+
+        player.setHealth(20);
+        player.setFoodLevel(20);
+
+        for(PotionEffect potionEffect: player.getActivePotionEffects()){
+            player.removePotionEffect(potionEffect.getType());
+        }
 
 
         Location spawnpoint = new Location(player.getWorld(), x, y, z, 0.9f, 3.1f);
