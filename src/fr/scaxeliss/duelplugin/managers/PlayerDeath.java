@@ -1,6 +1,6 @@
 package fr.scaxeliss.duelplugin.managers;
 
-import fr.scaxeliss.duelplugin.kit.Kits;
+import fr.scaxeliss.duelplugin.Main;
 import fr.scaxeliss.duelplugin.scoreboard.LobbyScoreboard;
 import fr.scaxeliss.duelplugin.timers.GameTimer;
 import fr.scaxeliss.duelplugin.timers.StartingTimer;
@@ -64,10 +64,11 @@ public class PlayerDeath implements Listener {
 
             player1.setHealth(20);
             player1.setFoodLevel(20);
+            player1.getActivePotionEffects().clear();
 
-            Kits.kit.replace(player1, "Aucun");
+            Main.kit.replace(player1, "Aucun");
 
-            LobbyScoreboard.Scoreboardd(player1, Kits.kit.get(player1));
+            LobbyScoreboard.Scoreboardd(player1, Main.kit.get(player1));
             player1.getInventory().setItem(0, ItemBuilder.itemWithLore(Material.COMPASS, "§aKits", "", "§eClique pour ouvrir le menu des kits !"));
         }
     }
