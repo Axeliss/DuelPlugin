@@ -1,8 +1,7 @@
 package fr.scaxeliss.duelplugin.commands;
 
-import fr.scaxeliss.duelplugin.kit.Kits;
+import fr.scaxeliss.duelplugin.Main;
 import fr.scaxeliss.duelplugin.managers.RegisterManager;
-import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -15,7 +14,7 @@ public class Statut implements CommandExecutor {
             return false;
         } else {
             sender.sendMessage("§6Statut : §cArrêté");
-            sender.sendMessage("votre kit : "+ Kits.kit.get(sender));
+            sender.sendMessage("votre kit : "+ Main.kit.get(sender));
             return false;
         }
     }
