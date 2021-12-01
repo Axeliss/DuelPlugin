@@ -19,6 +19,7 @@ public class Join implements Listener {
         player.getInventory().clear();
         ClearArmor.clearArmor(player);
 
+        e.setJoinMessage(null);
 
         int x = (int) Main.getInstance().getConfig().get("spawnpoint.x");
         int y = (int) Main.getInstance().getConfig().get("spawnpoint.y");
@@ -54,10 +55,9 @@ public class Join implements Listener {
             BukkitRunnable startingcountdown = new StartingTimer();
             startingcountdown.runTaskTimer(Main.getInstance(), 0, 20);
             RegisterManager.starting = true;
+            Bukkit.broadcastMessage("§7"+player.getName()+"§e vient de rejoindre la partie  §e(§7"+ Bukkit.getServer().getOnlinePlayers().size()+"§e/§72§e)");
             Bukkit.broadcastMessage("§e La partie est désormais complète ! Lancement du jeu dans §7"+StartingTimer.getCountdown()+" secondes !");
-            e.setJoinMessage("§7"+player.getName()+"§e vient de rejoindre la partie  §e(§7"+ Bukkit.getServer().getOnlinePlayers().size()+"§e/§72§e)");
         }
-        e.setJoinMessage("§7"+player.getName()+"§e vient de rejoindre la partie  §e(§7"+ Bukkit.getServer().getOnlinePlayers().size()+"§e/§72§e)");
         player.getInventory().setItem(0, ItemBuilder.itemWithLore(Material.COMPASS, "§aKits", "","§eClique pour ouvrir le menu des kits !"));
         Main.kit.put(player, "Aucun");
 
