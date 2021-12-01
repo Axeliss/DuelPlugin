@@ -19,6 +19,11 @@ public class StartingTimer extends BukkitRunnable {
     @Override
     public void run() {
 
+        if(!RegisterManager.starting) {
+            cancel();
+            return;
+        }
+
         if(countdown == Main.getInstance().getConfig().getInt("starting-countdown.reset-countdown")){
             cancel();
             countdown = Main.getInstance().getConfig().getInt("starting-countdown.countdown");
@@ -28,7 +33,7 @@ public class StartingTimer extends BukkitRunnable {
 
         if(countdown == 10 ||countdown == 5 ||countdown == 3||countdown == 2 ||countdown == 1) {
             if(RegisterManager.starting) {
-                Bukkit.broadcastMessage("§eLancement du jeu dans §7" + getCountdown() + " secondes !");
+                Bukkit.broadcastMessage("§eLancement du jeu dans §7" + getCountdown() + " secondes §e!");
                 for (Player player : Bukkit.getOnlinePlayers()) {
                     player.playSound(player.getLocation(), Sound.CLICK, 10, 2);
 
@@ -38,6 +43,7 @@ public class StartingTimer extends BukkitRunnable {
                 }
             }
         }
+
         if(countdown == 0) {
             cancel();
             resetCountdown();
