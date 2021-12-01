@@ -4,3 +4,4 @@ spawnpoint:
   z: 59
 starting-countdown:
   countdown: 20
+  reset-countdown: -1
