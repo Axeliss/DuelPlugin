@@ -1,7 +1,6 @@
 package fr.scaxeliss.duelplugin.managers;
 
 import fr.scaxeliss.duelplugin.Main;
-import fr.scaxeliss.duelplugin.kit.Kits;
 import fr.scaxeliss.duelplugin.scoreboard.LobbyScoreboard;
 import fr.scaxeliss.duelplugin.timers.StartingTimer;
 import org.bukkit.*;
@@ -10,7 +9,6 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.potion.PotionEffect;
-import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
 
 public class Join implements Listener {
@@ -52,16 +50,17 @@ public class Join implements Listener {
         } else
         player.setGameMode(GameMode.SURVIVAL);
 
-        e.setJoinMessage("§7"+player.getName()+"§e vient de rejoindre la partie  §e(§7"+ Bukkit.getServer().getOnlinePlayers().size()+"§e/§72§e)");
         if(!RegisterManager.pvp && !RegisterManager.starting && Bukkit.getOnlinePlayers().size() == 2){
             BukkitRunnable startingcountdown = new StartingTimer();
             startingcountdown.runTaskTimer(Main.getInstance(), 0, 20);
             RegisterManager.starting = true;
             Bukkit.broadcastMessage("§e La partie est désormais complète ! Lancement du jeu dans §7"+StartingTimer.getCountdown()+" secondes !");
+            e.setJoinMessage("§7"+player.getName()+"§e vient de rejoindre la partie  §e(§7"+ Bukkit.getServer().getOnlinePlayers().size()+"§e/§72§e)");
         }
+        e.setJoinMessage("§7"+player.getName()+"§e vient de rejoindre la partie  §e(§7"+ Bukkit.getServer().getOnlinePlayers().size()+"§e/§72§e)");
         player.getInventory().setItem(0, ItemBuilder.itemWithLore(Material.COMPASS, "§aKits", "","§eClique pour ouvrir le menu des kits !"));
-        Kits.kit.put(player, "Aucun");
+        Main.kit.put(player, "Aucun");
 
-        LobbyScoreboard.Scoreboardd(player, "§a"+ Kits.kit.get(player));
+        LobbyScoreboard.Scoreboardd(player, "§a"+ Main.kit.get(player));
     }
 }
