@@ -1,7 +1,6 @@
 package fr.scaxeliss.duelplugin.commands;
 
 import fr.scaxeliss.duelplugin.Main;
-import fr.scaxeliss.duelplugin.kit.Kits;
 import fr.scaxeliss.duelplugin.managers.ClearArmor;
 import fr.scaxeliss.duelplugin.managers.ItemBuilder;
 import fr.scaxeliss.duelplugin.managers.RegisterManager;
@@ -27,7 +26,7 @@ public class Start implements CommandExecutor {
 
 
         if(cmd.getName().equalsIgnoreCase("start")) {
-            if(!RegisterManager.pvp) {
+            if(!RegisterManager.pvp && !RegisterManager.starting) {
                 if(Bukkit.getOnlinePlayers().size() >= 2) {
                     BukkitRunnable startingcountdown = new StartingTimer();
                     startingcountdown.runTaskTimer(Main.getInstance(), 0, 20);
@@ -55,9 +54,9 @@ public class Start implements CommandExecutor {
                     player.setHealth(20);
                     player.setFoodLevel(20);
 
-                    Kits.kit.replace(player, "Aucun");
+                    Main.kit.replace(player, "Aucun");
 
-                    LobbyScoreboard.Scoreboardd(player, Kits.kit.get(player));
+                    LobbyScoreboard.Scoreboardd(player, Main.kit.get(player));
                     player.getInventory().setItem(0, ItemBuilder.itemWithLore(Material.COMPASS, "§aKits", "","§eClique pour ouvrir le menu des kits !"));
                 }
             } else{
@@ -69,9 +68,14 @@ public class Start implements CommandExecutor {
 
         }
         if(cmd.getName().equalsIgnoreCase("fs") && sender.isOp()){
-            BukkitRunnable startingcountdown = new StartingTimer();
-            startingcountdown.runTaskTimer(Main.getInstance(), 0, 20);
-            RegisterManager.starting = true;
+            if(!RegisterManager.starting && !RegisterManager.pvp) {
+                BukkitRunnable startingcountdown = new StartingTimer();
+                startingcountdown.runTaskTimer(Main.getInstance(), 0, 20);
+                RegisterManager.starting = true;
+            } else {
+                sender.sendMessage("§cLe jeu est déjà démarré ! /gstop pour l'arrêter !");
+                return false;
+            }
         }
         return false;
     }
