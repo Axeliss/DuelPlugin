@@ -1,8 +1,8 @@
 package fr.scaxeliss.duelplugin.interactions;
 
+import fr.scaxeliss.duelplugin.Main;
 import fr.scaxeliss.duelplugin.kit.KitSelection;
 import fr.scaxeliss.duelplugin.managers.ItemBuilder;
-import fr.scaxeliss.duelplugin.kit.Kits;
 import fr.scaxeliss.duelplugin.scoreboard.LobbyScoreboard;
 import org.bukkit.Material;
 import org.bukkit.Sound;
@@ -33,57 +33,57 @@ public class KitInventoryClick implements Listener {
              e.setCancelled(true);
 
 
-             if(current.getType() == Material.BOW && current.hasItemMeta() && current.getItemMeta().getDisplayName().equalsIgnoreCase("§aArcher") && !Kits.kit.get(player).equalsIgnoreCase("archer")){
-                 Kits.kit.put(player, "Archer");
-                 player.sendMessage("§eKit sélectionné : "+Kits.kit.get(player.getPlayer()));
+             if(current.getType() == Material.BOW && current.hasItemMeta() && current.getItemMeta().getDisplayName().equalsIgnoreCase("§aArcher") && ! Main.kit.get(player).equalsIgnoreCase("archer")){
+                  Main.kit.put(player, "Archer");
+                 player.sendMessage("§eKit sélectionné : "+ Main.kit.get(player.getPlayer()));
                  player.playSound(player.getLocation(), Sound.CLICK, 30, 2);
 
                  KitSelection.kitInventory(player);
-                 LobbyScoreboard.Scoreboardd(player, "§a"+Kits.kit.get(player.getPlayer()));
+                 LobbyScoreboard.Scoreboardd(player, "§a"+ Main.kit.get(player.getPlayer()));
                  return;
              } else
-             if(current.getType() == Material.BOW && current.hasItemMeta() && current.getItemMeta().getDisplayName().equalsIgnoreCase("§aArcher") && Kits.kit.get(player).equalsIgnoreCase("archer")){
+             if(current.getType() == Material.BOW && current.hasItemMeta() && current.getItemMeta().getDisplayName().equalsIgnoreCase("§aArcher") &&  Main.kit.get(player).equalsIgnoreCase("archer")){
                  player.sendMessage("§cKit désélectionné : Archer");
                  player.playSound(player.getLocation(), Sound.CLICK, 30, 2);
-                 Kits.kit.replace(player, "Aucun");
+                  Main.kit.replace(player, "Aucun");
                  KitSelection.kitInventory(player);
                  LobbyScoreboard.Scoreboardd(player, "§aAucun");
                  return;
              }
 
 
-             if(current.getType() == Material.IRON_SWORD && current.hasItemMeta() && current.getItemMeta().getDisplayName().equalsIgnoreCase("§aGuerrier") && !Kits.kit.get(player).equalsIgnoreCase("guerrier")){
-                 Kits.kit.put(player, "Guerrier");
-                 player.sendMessage("§eKit sélectionné : "+Kits.kit.get(player.getPlayer()));
+             if(current.getType() == Material.IRON_SWORD && current.hasItemMeta() && current.getItemMeta().getDisplayName().equalsIgnoreCase("§aGuerrier") && ! Main.kit.get(player).equalsIgnoreCase("guerrier")){
+                  Main.kit.put(player, "Guerrier");
+                 player.sendMessage("§eKit sélectionné : "+ Main.kit.get(player.getPlayer()));
                  player.playSound(player.getLocation(), Sound.CLICK, 30, 2);
 
                  KitSelection.kitInventory(player);
-                 LobbyScoreboard.Scoreboardd(player, "§a"+Kits.kit.get(player.getPlayer()));
+                 LobbyScoreboard.Scoreboardd(player, "§a"+ Main.kit.get(player.getPlayer()));
                  return;
              } else
-             if(current.getType() == Material.IRON_SWORD && current.hasItemMeta() && current.getItemMeta().getDisplayName().startsWith("§aGuerrier") && Kits.kit.get(player).equalsIgnoreCase("guerrier")){
+             if(current.getType() == Material.IRON_SWORD && current.hasItemMeta() && current.getItemMeta().getDisplayName().startsWith("§aGuerrier") &&  Main.kit.get(player).equalsIgnoreCase("guerrier")){
                  player.sendMessage("§cKit désélectionné : Guerrier");
                  player.playSound(player.getLocation(), Sound.CLICK, 30, 2);
-                 Kits.kit.replace(player, "Aucun");
+                  Main.kit.replace(player, "Aucun");
                  KitSelection.kitInventory(player);
                  LobbyScoreboard.Scoreboardd(player, "§aAucun");
                  return;
              }
 
 
-             if(current.getType() == Material.POTION && current.hasItemMeta() && current.getItemMeta().getDisplayName().equalsIgnoreCase("§aSorcier") && !Kits.kit.get(player).equalsIgnoreCase("sorcier")){
-                 Kits.kit.put(player, "Sorcier");
-                 player.sendMessage("§eKit sélectionné : "+Kits.kit.get(player.getPlayer()));
+             if(current.getType() == Material.POTION && current.hasItemMeta() && current.getItemMeta().getDisplayName().equalsIgnoreCase("§aSorcier") && ! Main.kit.get(player).equalsIgnoreCase("sorcier")){
+                  Main.kit.put(player, "Sorcier");
+                 player.sendMessage("§eKit sélectionné : "+ Main.kit.get(player.getPlayer()));
                  player.playSound(player.getLocation(), Sound.CLICK, 30, 2);
 
                  KitSelection.kitInventory(player);
                  LobbyScoreboard.Scoreboardd(player, "Sorcier");
                  return;
              } else
-             if(current.getType() == Material.POTION && current.hasItemMeta() && current.getItemMeta().getDisplayName().startsWith("§aSorcier") && Kits.kit.get(player).equalsIgnoreCase("sorcier")){
+             if(current.getType() == Material.POTION && current.hasItemMeta() && current.getItemMeta().getDisplayName().startsWith("§aSorcier") &&  Main.kit.get(player).equalsIgnoreCase("sorcier")){
                  player.sendMessage("§cKit désélectionné : Sorcier");
                  player.playSound(player.getLocation(), Sound.CLICK, 30, 2);
-                 Kits.kit.replace(player, "Aucun");
+                  Main.kit.replace(player, "Aucun");
                  KitSelection.kitInventory(player.getPlayer());
                  LobbyScoreboard.Scoreboardd(player, "§aAucun");
                  return;
