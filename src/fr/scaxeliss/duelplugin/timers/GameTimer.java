@@ -1,7 +1,8 @@
 package fr.scaxeliss.duelplugin.timers;
 
-import fr.scaxeliss.duelplugin.kit.Kits;
+import fr.scaxeliss.duelplugin.Main;
 import fr.scaxeliss.duelplugin.scoreboard.GameScoreboard;
+import fr.scaxeliss.duelplugin.scoreboard.UpdateScoreboard;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -15,9 +16,7 @@ public class GameTimer extends BukkitRunnable {
 
         if(time != -1) {
             time++;
-            for (Player player : Bukkit.getOnlinePlayers()) {
-                GameScoreboard.gameScoreboard(player, Kits.kit.get(player));
-            }
+            UpdateScoreboard.updateGameScoreboard();
         } else {
             cancel();
             time = 0;
