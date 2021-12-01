@@ -1,5 +1,6 @@
 package fr.scaxeliss.duelplugin.kit;
 
+import fr.scaxeliss.duelplugin.Main;
 import fr.scaxeliss.duelplugin.managers.ItemBuilder;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -57,11 +58,11 @@ public class GiveKits {
 
     public static void giveKits(){
         for(Player player: Bukkit.getOnlinePlayers()){
-            if(Kits.kit.get(player).equalsIgnoreCase("Archer")){
+            if(Main.kit.get(player).equalsIgnoreCase("Archer")){
                 giveKitArcher(player);
-            } else if(Kits.kit.get(player).equalsIgnoreCase("Sorcier")){
+            } else if(Main.kit.get(player).equalsIgnoreCase("Sorcier")){
                 giveKitWitch(player);
-            } else if(Kits.kit.get(player).equalsIgnoreCase("Guerrier")){
+            } else if(Main.kit.get(player).equalsIgnoreCase("Guerrier")){
                 giveKitWarrior(player);
             }
         }
